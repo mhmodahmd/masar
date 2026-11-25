@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="light">
 <head>
 <base target="_top">
 <meta charset="utf-8">
@@ -5882,7 +5882,7 @@ function __seed(env) {
     [7, 'partner', 'م. خالد الأحمد', 'entity', 1], [8, 'partner2', 'أ. عبدالله الحميري', 'entity', 2], [9, 'partner3', 'د. محمد عثمان', 'entity', 3], [10, 'partner4', 'أ. ليلى الخطيب', 'entity', 4], [11, 'partner5', 'أ. نور الإسلام', 'entity', 5], [12, 'partner6', 'م. أنس الحلبي', 'entity', 6]
   ];
   USERS.forEach(function (u) { var s = newSalt_();
-    insert_('Users', { id: u[0], username: u[1], full_name: u[2], role: u[3], entity_id: u[4], email: u[1] + '@demo.example', phone: '', active: true, salt: s, hash: makeHash_(PW + '', s), must_change: false, last_login: '' }, null); });
+    insert_('Users', { id: u[0], username: u[1], full_name: u[2], role: u[3], entity_id: u[4], email: u[1] + '@demo.example', phone: '', active: true, salt: s, hash: makeHash_(PW + '', s), must_change: false, last_login: '', guide: JSON.stringify({ theme: 'light' }) }, null); });
   var U = function (id) { return getRow_('Users', id); };
   var SA = U(1), ACC = U(4), PRJ = U(5);
 
@@ -6081,7 +6081,7 @@ return {api:api,seed:function(){return __seed(env)},init:function(){Object.keys(
 
 
 (function () {
-  var KEY = 'masar-demo-data-v1';
+  var KEY = 'masar-demo-data-v2';
   function readSaved() { try { return JSON.parse(localStorage.getItem(KEY) || 'null'); } catch (e) { return null; } }
   function save() { var d = env.__dump(); try { localStorage.setItem(KEY, JSON.stringify(d)); }
     catch (e) { try { localStorage.setItem(KEY, JSON.stringify(env.__dump({ noUploads: true }))); } catch (e2) {} } }
@@ -7454,7 +7454,7 @@ let VC_WT=null,VC_WEL=null;
 document.addEventListener('mouseover',e=>{const el=e.target&&e.target.closest?e.target.closest('[onclick]'):null;if(el===VC_WEL)return;VC_WEL=el;clearTimeout(VC_WT);
   const t=vcWarmTarget(el);if(t)VC_WT=setTimeout(()=>vcWarm(t[0],t[1]),150)});
 document.addEventListener('touchstart',e=>{const el=e.target&&e.target.closest?e.target.closest('[onclick]'):null,t=vcWarmTarget(el);if(t)vcWarm(t[0],t[1])},{passive:true});
-function showLogin(){TOKEN=null;ME=null;try{sessionStorage.removeItem('tk')}catch(e){}vcClear();$('#app').classList.add('hidden');$('#login').classList.remove('hidden');chatReset(true);applyTheme('auto')}
+function showLogin(){TOKEN=null;ME=null;try{sessionStorage.removeItem('tk')}catch(e){}vcClear();$('#app').classList.add('hidden');$('#login').classList.remove('hidden');chatReset(true);applyTheme('light')}
 
 const THEMES={auto:'🖥 تلقائي',light:'☀️ فاتح',dark:'🌙 داكن'},THEME_ORDER=['auto','light','dark'];
 function applyTheme(t){t=THEMES[t]?t:'auto';document.documentElement.dataset.theme=t;const b=$('#themeBtn');if(b)b.textContent=THEMES[t]}
